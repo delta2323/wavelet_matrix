@@ -49,33 +49,6 @@ TEST(wm, confirmation_of_notation_and_index) {
   ASSERT_EQ(4, w.Select(2, 2));
 }
 
-vector<vector<char_t> > Parameters() {
-  vector<vector<char_t> > ret;
-  {
-    vector<char_t> vs(kMax, 0);
-    ret.push_back(vs);
-  }
-  {
-    vector<char_t> vs(kMax);
-    for(size_t i = 0; i < kMax; ++i) {
-      vs[i] = i;
-    }
-    ret.push_back(vs);
-  }
-
-  {
-    srand(0);
-    vector<char_t> vs;
-    for(size_t n = 0; n < kMax; ++n) {
-      vs.push_back(static_cast<char_t>(n));
-    }
-    random_shuffle(vs.begin(), vs.end());
-    ret.push_back(vs);
-  }
-
-  return ret;
-}
-
 class SameCharTest : public testing::TestWithParam<size_t> {
 public:
   static void SetUpTestCase() {

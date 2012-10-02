@@ -29,16 +29,9 @@ void WM::Build(const std::vector<WM::char_t>& text_) {
   bs.resize(kDepth);
   for(size_t d = 0; d < kDepth; ++d) {
     ux::BitVec bv;
-    // for(size_t i = 0; i < text.size(); ++i) {
-    //   cout << static_cast<int>(text[i]);
-    // }
-    // cout << endl;
-
     for(size_t i = 0; i < text.size(); ++i) {
       bv.push_back((text[i] >> d) & 1);
     }
-    //    bv.print();
-    //    cout << endl;
     bs[d] = new ux::RSDic();
     bs[d]->build(bv);
     Comparator c(d);
@@ -48,7 +41,6 @@ void WM::Build(const std::vector<WM::char_t>& text_) {
   zs.resize(kDepth);
   for(size_t d = 0; d < kDepth; ++d) {
     zs[d] = bs[d]->rank(text.size()-1, 0);
-    //    cout << d << "\t" << zs[d] << endl;
   }
 }
   
