@@ -1,0 +1,49 @@
+VERSION = '0.0.1'
+APPNAME = 'wm'
+
+def options(opt):
+    pass
+
+def configure(conf):
+    pass    
+
+def build(bld):
+  bld.shlib(
+    source = [
+      'wm.cpp',
+      ],
+    target = 'wm',
+    includes = '.',
+    use = 'UX'
+    )
+
+  bld.program(
+    features = 'gtest',
+    source = 'ux_test.cpp',
+    target = 'ux_test',
+    includes = '.',
+    use = 'UX'
+    )
+
+  bld.program(
+    features = 'gtest',
+    source = 'wm_test.cpp',
+    target = 'wm_test',
+    includes = '.',
+    use = 'wm'
+    )
+
+  bld.program(
+    features = 'gtest',
+    source = 'wm_test_2.cpp',
+    target = 'wm_test_2',
+    includes = '.',
+    use = 'wm'
+    )
+
+  bld.program(
+    source = 'wm_main.cpp',
+    target = 'wm_main',
+    includes = '.',
+    use = 'wm'
+    )
